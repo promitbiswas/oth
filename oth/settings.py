@@ -1,8 +1,10 @@
 # Django settings for hunt project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_DIR,os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -12,7 +14,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'online_treasure_hunt',                      # Or path to database file if using sqlite3.
+        'NAME': 'the_browse',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PASSWORD': 'mukti123!',
@@ -49,7 +51,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/var/www/oth/media/'
+MEDIA_ROOT = os.path.join(PROJECT_PATH,'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -60,7 +62,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+#STATIC_ROOT = os.path.join(PROJECT_PATH,'static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -68,7 +70,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-	"/var/www/oth/static/",
+	os.path.join(PROJECT_PATH,'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -125,7 +127,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "/var/www/oth/templates",
+    os.path.join(PROJECT_PATH,'templates'),
 	"/var/www/hunt/fandjango-master/fandjango/templates/",
 
 )
@@ -133,9 +135,9 @@ TEMPLATE_DIRS = (
 
 FACEBOOK_APPLICATION_ID = '183216621874530'
 FACEBOOK_APPLICATION_SECRET_KEY = '60d4f52542b5fb445a08c49449982163'
-FACEBOOK_APPLICATION_NAMESPACE = 'muktinitdurgapur'
+FACEBOOK_APPLICATION_NAMESPACE = 'vervexi'
 FACEBOOK_APPLICATION_INITIAL_PERMISSIONS = ['read_stream', 'publish_stream']
-FANDJANGO_SITE_URL = 'http://treasurehunt.mkti.in'
+FANDJANGO_SITE_URL = 'http://thebrowse.lcnitd.org'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

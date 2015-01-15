@@ -24,7 +24,7 @@ def level_view(request,slug):
 		number = curr_level.number
 		title = curr_level.title
 		source = curr_level.source
-		photo = curr_level.photo
+		url = curr_level.url
 		text = curr_level.text
 		js = curr_level.js
 		l = curr_level.number
@@ -33,9 +33,8 @@ def level_view(request,slug):
 		count = 0
 		for u in user_list:
 			if u.max_level> curr_level.number:
-				count+=1
-			
-		return render_to_response('level.html',{'title':title,'number':number,'source':mark_safe(source),'photo':photo,'text':mark_safe(text),'js':mark_safe(js),'level':l,'name':player_name,'pass_count':str(count)},context_instance=RequestContext(request))
+				count+=1	
+	return render_to_response('level.html',{'title':title,'number':number,'source':mark_safe(source),'url':url,'text':mark_safe(text),'js':mark_safe(js),'level':l,'name':player_name,'pass_count':str(count)},context_instance=RequestContext(request))
 
 def level_file(request,filename):
 	return HttpResponseRedirect('/static/'+filename)
@@ -58,7 +57,7 @@ def check_answer(request):
 		graph = GraphAPI(token)
 		profile_id = request.facebook.user.facebook_id
 		try:
-			graph.post(path = str(profile_id)+'/feed', message = 'I just crossed level ' +str(user_level) +'!! in MUKTI\'s Online treasure hunt.', caption = 'Online treasure hunt' , link = 'treasurehunt.mkti.in')
+			graph.post(path = str(profile_id)+'/feed', message = 'I just crossed level ' +str(user_level) +' in THE BROWSE, Verve XI!', caption = 'The Browse' , link = 'thebrowse.lcnitd.org')
 		except:
 			pass
 		ui = userInfo.objects.get(user = request.facebook.user)
